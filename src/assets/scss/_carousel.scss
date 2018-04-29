@@ -1,0 +1,11 @@
+.carousel-item {
+
+  height: 23rem;
+  background-color: #777;
+
+
+  .carousel-caption {
+    top: calc(50% - 70px);
+    bottom: auto;
+  }
+}
