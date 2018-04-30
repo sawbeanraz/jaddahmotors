@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import Header from '../components/header'
+import Footer from '../components/footer'
+import Copyright from '../components/copyright';
 import '../assets/scss/index.scss'
 
 const Layout = ({ children, data }) => (
@@ -19,6 +21,9 @@ const Layout = ({ children, data }) => (
       siteMenu={data.site.siteMetadata.menu } />
     
     {children()}    
+
+    <Footer />
+    <Copyright />
   </div>
 )
 
