@@ -16,10 +16,10 @@ export default PageCarousel;
 const pageCarouseItems = [
   {
     key: '001',
-    title: 'Services',
-    content: 'Quality service at resonable price',
+    title: '',
+    content: '',
     image: bannerService,
-    url: 'services'    
+    url: ''    
   },
   {
     key: '002',

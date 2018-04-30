@@ -2,10 +2,18 @@
 
   height: 23rem;
   background-color: #777;
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
 
   .carousel-caption {
     top: calc(50% - 70px);
     bottom: auto;
   }
+
+
+
+  
 }

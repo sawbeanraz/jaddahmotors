@@ -62,8 +62,8 @@ export default class Carousel extends Component {
         <div className="carousel-inner">
           {this.props.items.map((item, index) => (
             <div className={this.state.index == index?'carousel-item active':'carousel-item'}
-              key={item.key}>
-              <img className="first-slide" src={item.image} alt={item.title}/>
+              key={item.key}
+              style={{backgroundImage: `url(${item.image})`}}>
               <div className="container">
                 <div className="carousel-caption text-left">
                   <h1>{item.title}</h1>
