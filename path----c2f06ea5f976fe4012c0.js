@@ -1,0 +1,2 @@
+webpackJsonp([60335399758886],{104:function(t,e){t.exports={data:{site:{siteMetadata:{title:"Jaddah Motors",menu:[{key:"home",title:"Home",url:"/"},{key:"services",title:"Services",url:"/services"},{key:"about",title:"About",url:"/about"},{key:"contact",title:"Contact",url:"/contact"}]}}},layoutContext:{}}}});
+//# sourceMappingURL=path----c2f06ea5f976fe4012c0.js.map
