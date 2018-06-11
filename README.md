@@ -1,5 +1,7 @@
-# Jaddah Motors
-Static website for Jaddah Motors. Powered by Gatsbyjs and Reactjs
+# Restorer Motors
+Static website for Restorer Motors (Previously Jaddah Motors). Powered by Gatsbyjs and Reactjs.
+
+
 
 ## Quick Start
 
@@ -14,4 +16,9 @@ yarn develop
 ```
 
 ## Deploy
-Comming soon
+
+The site is deployed to Github. 
+
+```sh
+yarn deploy
+```

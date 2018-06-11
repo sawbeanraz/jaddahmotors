@@ -12,7 +12,7 @@ const Copyright = () => (
             </a>
           </p>
           <p>
-            &copy; {new Date().getFullYear()} Jaddah Motors               
+            &copy; {new Date().getFullYear()} Restorer Motors               
           </p>
         </div>
       </div>

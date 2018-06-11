@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Jaddah Motors',
+    title: 'Restorer Motors',
     menu: [
       { key: 'home',      title: 'Home',      url: '/' },
       { key: 'services',  title: 'Services',  url: '/services' },      
@@ -12,5 +12,5 @@ module.exports = {
     'gatsby-plugin-react-helmet',    
     'gatsby-plugin-sass'    
   ],
-  pathPrefix: '/jaddahmotors'
+  pathPrefix: '/restorermotors'
 }

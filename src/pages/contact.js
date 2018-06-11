@@ -29,7 +29,7 @@ const Contact = () => (
 
     <section className='page-section'>
       <div className='container text-center'>
-        <h3>Jaddah Motors</h3> <br/>
+        <h3>Restorer Motors</h3> <br/>
         12 Conway Road, Plumstead, <br/>
         London, <br/>
         SE18 1AQ <br/>

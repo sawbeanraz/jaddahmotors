@@ -9,7 +9,7 @@ const Footer = () => (
           <div className="col-md-8">
             <address>              
               <img src={logo}/>
-              <h4>Jaddah Motors</h4>
+              <h4>Restorer Motors</h4>
               12 Conway Road, Plumstead, <br/>
               London, <br/>
               SE18 1AQ <br/>

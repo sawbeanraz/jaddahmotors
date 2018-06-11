@@ -6,7 +6,7 @@ const SectionAbout = () => (
     <article className="container">
       <header className="row">
         <div className="col-sm-12">
-          <h1 className="page-section-heading">Jaddah Motors</h1>
+          <h1 className="page-section-heading">Restorer Motors</h1>
         </div>
       </header>
       <div className="row">
