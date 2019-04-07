@@ -1622,7 +1622,7 @@ module.exports = __webpack_require__.p + "static/banner-pickup-5a44d8a19b7ec924c
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "static/banner-service-price-f0fc48887d9b1f3fe38763663fb14e42.jpg";
+module.exports = __webpack_require__.p + "static/banner-service-price-3d258bfe9a99e5fdc386089669317a89.jpg";
 
 /***/ }),
 
@@ -1752,12 +1752,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gatsby-link */ "./node_modules/gatsby-link/index.js");
-/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(gatsby_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gatsby-link */ "./node_modules/gatsby-link/index.js");
+/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(gatsby_link__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
+
+var CAROUSEL_TIMER_INTERVAL = 5000;
 
 var Carousel =
 /*#__PURE__*/
@@ -1769,8 +1773,7 @@ function (_Component) {
 
     _this = _Component.call(this, context, props) || this;
     _this.state = {
-      index: 0,
-      timer: 1000
+      index: 0
     };
     _this.handleNext = _this.handleNext.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this));
     _this.handlePrevious = _this.handlePrevious.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_0___default()(_this));
@@ -1779,18 +1782,6 @@ function (_Component) {
   }
 
   var _proto = Carousel.prototype;
-
-  _proto.handleTimer = function handleTimer() {
-    var _this2 = this;
-
-    this.timer = setInterval(function () {
-      _this2.setState(function (prevState, props) {
-        return {
-          index: prevState.index >= props.items.length - 1 ? 0 : prevState.index + 1
-        };
-      });
-    }, 4000);
-  };
 
   _proto.componentDidMount = function componentDidMount() {
     this.handleTimer();
@@ -1802,6 +1793,7 @@ function (_Component) {
   };
 
   _proto.handleNext = function handleNext(e) {
+    e.preventDefault();
     this.setState(function (prev, props) {
       return {
         index: prev.index >= props.items.length - 1 ? 0 : prev.index + 1
@@ -1810,33 +1802,45 @@ function (_Component) {
   };
 
   _proto.handlePrevious = function handlePrevious(e) {
-    var _this3 = this;
-
-    this.setState(function (prev, props) {
-      return {
-        index: _this3.state.index <= 0 ? props.items.length - 1 : prev.index - 1
-      };
+    e.preventDefault();
+    var index = this.state.index;
+    var items = this.props.items;
+    var newIndex = index <= 0 ? items.length - 1 : index - 1;
+    this.setState({
+      index: newIndex
     });
   };
 
-  _proto.render = function render() {
-    var _this4 = this;
+  _proto.handleTimer = function handleTimer() {
+    var _this2 = this;
 
+    this.timer = setInterval(function () {
+      _this2.setState(function (prevState, props) {
+        return {
+          index: prevState.index >= props.items.length - 1 ? 0 : prevState.index + 1
+        };
+      });
+    }, CAROUSEL_TIMER_INTERVAL);
+  };
+
+  _proto.render = function render() {
+    var items = this.props.items;
+    var index = this.state.index;
     return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: "carousel slide",
       "data-ride": "carousel"
     }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("ol", {
       className: "carousel-indicators"
-    }, this.props.items.map(function (item, index) {
+    }, items.map(function (item, index_) {
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("li", {
         key: item.key,
-        className: _this4.state.index === index ? 'active' : ''
+        className: index === index_ ? 'active' : ''
       });
     })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: "carousel-inner"
-    }, this.props.items.map(function (item, index) {
+    }, items.map(function (item, index_) {
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-        className: _this4.state.index === index ? 'carousel-item active' : 'carousel-item',
+        className: index === index_ ? 'carousel-item active' : 'carousel-item',
         key: item.key,
         style: {
           backgroundImage: "url(" + item.image + ")"
@@ -1845,7 +1849,7 @@ function (_Component) {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
         className: "carousel-caption text-left"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h1", null, item.title), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, item.content), item.url ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(gatsby_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("h1", null, item.title), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, item.content), item.url ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(gatsby_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
         className: "btn btn-lg btn-primary",
         to: item.url,
         role: "button"
@@ -1855,7 +1859,7 @@ function (_Component) {
       role: "button",
       "data-slide": "prev",
       onClick: this.handlePrevious,
-      href: "#"
+      href: "#previous"
     }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
       className: "carousel-control-prev-icon",
       "aria-hidden": "true"
@@ -1866,7 +1870,7 @@ function (_Component) {
       role: "button",
       "data-slide": "next",
       onClick: this.handleNext,
-      href: "#"
+      href: "#next"
     }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
       className: "carousel-control-next-icon",
       "aria-hidden": "true"
@@ -1879,6 +1883,15 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_2__["Component"]);
 
 
+Carousel.propTypes = {
+  items: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.shape({
+    key: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+    image: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+    title: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.stirng,
+    content: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+    url: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string
+  })).isRequired
+};
 
 /***/ }),
 
@@ -1908,42 +1921,19 @@ var Footer = function Footer() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-8"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("address", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_1___default.a
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Restorer Motors"), "12 Conway Road, Plumstead, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "London, ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "SE18 1AQ ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    src: _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: "Company Logo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Restorer Motors"), "12 Conway Road, Plumstead,", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "London,", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "SE18 1AQ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fa fa-phone"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tel", null, " 020 8317 4430")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "list-inline social"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-facebook-square"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-twitter"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-google-plus-square"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-linkedin-square"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-rss-square"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "#"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fa fa-youtube-play"
-  }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "tel:+442083174430"
+  }, "020 8317 4430"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "footer-heading"
   }, "Opening Times"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "opening-time"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Mon:"), " 8am - 6pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Tue:"), " 8am - 6pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Wed:"), " 8am - 6pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Thu:"), " 8am - 6pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Fri:"), " 8am - 6pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Sat:"), " 8am - 4pm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Sun:"), " Closed"))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Mon:"), ' 8:30am - 6:30pm'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Tue:"), ' 8:30am - 6:30pm'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Wed:"), ' 8:30am - 6:30pm'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Thu:"), ' 8:30am - 6:30pm'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Fri:"), ' 8:30am - 6:30pm'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Sat:"), ' 8:30am - 6:30pm'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Sun:"), ' Closed'))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -1966,10 +1956,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gatsby-link */ "./node_modules/gatsby-link/index.js");
-/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(gatsby_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/images/motors-logo.svg */ "./src/assets/images/motors-logo.svg");
-/* harmony import */ var _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gatsby-link */ "./node_modules/gatsby-link/index.js");
+/* harmony import */ var gatsby_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(gatsby_link__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/images/motors-logo.svg */ "./src/assets/images/motors-logo.svg");
+/* harmony import */ var _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -1995,7 +1988,8 @@ function (_React$Component) {
   var _proto = Header.prototype;
 
   _proto.handleToggleMenu = function handleToggleMenu(e) {
-    this.setState(function (prev, props) {
+    e.preventDefault();
+    this.setState(function (prev) {
       return {
         open: !prev.open
       };
@@ -2003,17 +1997,21 @@ function (_React$Component) {
   };
 
   _proto.render = function render() {
+    var _this$props = this.props,
+        siteTitle = _this$props.siteTitle,
+        siteMenu = _this$props.siteMenu;
+    var open = this.state.open;
     return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("nav", {
       className: "navbar navbar-expand-md navbar-dark fixed-top bg-dark"
     }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
       className: "container"
-    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(gatsby_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(gatsby_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
       to: "/",
       className: "navbar"
-    }, _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_4___default.a ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
-      src: _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
+    }, _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_5___default.a ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("img", {
+      src: _assets_images_motors_logo_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
       alt: "logo"
-    }) : this.props.siteTitle), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
+    }) : siteTitle), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("button", {
       className: "navbar-toggler collapsed",
       type: "button",
       "data-toggle": "collapse",
@@ -2025,15 +2023,15 @@ function (_React$Component) {
     }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("span", {
       className: "navbar-toggler-icon"
     })), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", {
-      className: this.state.open ? "navbar-collapse collapse show" : "navbar-collapse collapse",
+      className: open ? 'navbar-collapse collapse show' : 'navbar-collapse collapse',
       id: "navbarCollapse"
     }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("ul", {
       className: "navbar-nav ml-auto"
-    }, this.props.siteMenu.map(function (item) {
+    }, siteMenu.map(function (item) {
       return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("li", {
         key: item.key,
         className: "nav-item"
-      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(gatsby_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(gatsby_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
         key: item.key,
         to: item.url,
         className: "nav-link"
@@ -2045,6 +2043,14 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_2___default.a.Component);
 
 
+Header.propTypes = {
+  siteTitle: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string.isRequired,
+  siteMenu: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.shape({
+    key: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string.isRequired,
+    url: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string.isRequired,
+    title: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string.isRequired
+  })).isRequired
+};
 
 /***/ }),
 
@@ -2149,6 +2155,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var logoSVGStyle = {
+  opacity: 1,
+  fill: 'rgb(116, 121, 126)',
+  fillOpacity: 1,
+  stroke: 'none',
+  strokeWidth: 0.69999999,
+  strokeLinejoin: 'miter',
+  strokeMiterlimit: 4,
+  strokeDasharray: 'none',
+  strokeDashoffset: 0,
+  strokeOpacity: 0.88757396
+};
+var logoTextStyle = {
+  fontStyle: 'normal',
+  fontVariant: 'normal',
+  fontWeight: '900',
+  fontStretch: 'normal',
+  fontSize: '27.19413948px',
+  lineHeight: '100%',
+  fontFamily: 'Umpush',
+  textAlign: 'start',
+  letterSpacing: '0px',
+  wordSpacing: '0px',
+  writingMode: 'lr-tb',
+  textAnchor: 'start',
+  fill: 'rgb(116, 121, 126)',
+  fillOpacity: 1,
+  stroke: 'none',
+  strokeWidth: '1px',
+  strokeLinecap: 'butt',
+  strokeLinejoin: 'miter',
+  strokeOpacity: 1
+};
 
 var About = function About() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("main", {
@@ -2183,39 +2222,6 @@ var About = function About() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (About);
-var logoSVGStyle = {
-  opacity: 1,
-  fill: 'rgb(116, 121, 126)',
-  fillOpacity: 1,
-  stroke: 'none',
-  strokeWidth: 0.69999999,
-  strokeLinejoin: 'miter',
-  strokeMiterlimit: 4,
-  strokeDasharray: 'none',
-  strokeDashoffset: 0,
-  strokeOpacity: 0.88757396
-};
-var logoTextStyle = {
-  fontStyle: 'normal',
-  fontVariant: 'normal',
-  fontWeight: '900',
-  fontStretch: 'normal',
-  fontSize: '27.19413948px',
-  lineHeight: '100%',
-  fontFamily: 'Umpush',
-  textAlign: 'start',
-  letterSpacing: '0px',
-  wordSpacing: '0px',
-  writingMode: 'lr-tb',
-  textAnchor: 'start',
-  fill: 'rgb(116, 121, 126)',
-  fillOpacity: 1,
-  stroke: 'none',
-  strokeWidth: '1px',
-  strokeLinecap: 'butt',
-  strokeLinejoin: 'miter',
-  strokeOpacity: 1
-};
 
 /***/ }),
 
@@ -2411,7 +2417,7 @@ var ServicesPage = function ServicesPage() {
     className: "card-title pricing-card-title"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "text-muted"
-  }, "from "), "\xA399"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  }, "from "), "\xA3130"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled mt-3 mb-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Full servicing of your car"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Labour cost included"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Additional cost for only changed parts")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card mb-4 box-shadow"
@@ -2419,7 +2425,7 @@ var ServicesPage = function ServicesPage() {
     className: "card-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "my-0 font-weight-normal"
-  }, "Intrim Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Interim Service")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
     className: "card-title pricing-card-title"
@@ -2496,15 +2502,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var PageCarousel = function PageCarousel() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    items: pageCarouseItems
-  });
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (PageCarousel);
-var pageCarouseItems = [{
+var pageCarouselItems = [{
   key: '001',
   title: '',
   content: '',
@@ -2516,6 +2514,14 @@ var pageCarouseItems = [{
   content: 'Pickup service when you need it',
   image: _assets_images_banner_pickup_jpg__WEBPACK_IMPORTED_MODULE_3___default.a
 }];
+
+var PageCarousel = function PageCarousel() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_carousel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    items: pageCarouselItems
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PageCarousel);
 
 /***/ }),
 
@@ -2549,9 +2555,9 @@ var SectionAbout = function SectionAbout() {
     className: "col-sm-12"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lead"
-  }, "We are small workshop that provide best care, repair and maintenance service. We are well equipped to provide better service in resonable price. We have capability of full dealer."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "We are small workshop that provide best care, repair and \n            maintenance service. We are well equipped to provide better \n            service in resonable price. We have capability of full dealer.\n            "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lead"
-  }, "A part from being new local garage, we have experice of more than 20 years providing service. Our aim is to provide quality service so that you enjoy your motoring experice.")))));
+  }, "A part from being new local garage, we have experice of more than \n            20 years providing service. Our aim is to provide quality service\n            so that you enjoy your motoring experice.")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SectionAbout);
@@ -2596,13 +2602,13 @@ var SectionFeatured = function SectionFeatured() {
     className: "col-md-7"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "featurette-heading"
-  }, "MOT - ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "MOT -", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "text-muted"
-  }, "Servicing"), " - Repairs ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, " Servicing"), "- Repairs", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "text-muted"
-  }, "Diagnostics")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, " Diagnostics")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lead"
-  }, "We provide full car service from \xA399. We also guarantee 100% satisfaction.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "We provide full car service from \xA3130. We also guarantee 100% satisfaction.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-5"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "featurette-image img-fluid mx-auto",
@@ -2616,9 +2622,9 @@ var SectionFeatured = function SectionFeatured() {
     className: "col-md-7 order-md-2"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "featurette-heading"
-  }, "Break Down ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Break Down", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "text-muted"
-  }, "Recovery")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, " Recovery")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lead"
   }, "If you are car is stuck somewhere we can recover and repair it and can devliver it to you. ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-5 order-md-1"
@@ -2634,11 +2640,11 @@ var SectionFeatured = function SectionFeatured() {
     className: "col-md-7"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "featurette-heading"
-  }, "Pick & ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "Pick &", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "text-muted"
-  }, "Fix")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, " Fix")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lead"
-  }, "If you are not able to drop your car for repairing then can come to pick up your car, repair it and drop it again. We call it Pick & Fix service.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "If you are not able to drop your car for repairing then \n            can come to pick up your car, repair it and drop it again. \n            We call it Pick &amp; Fix service.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-5"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "featurette-image img-fluid mx-auto",
@@ -2654,7 +2660,7 @@ var SectionFeatured = function SectionFeatured() {
     className: "featurette-heading"
   }, "Brand new Tyres"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "lead"
-  }, "Get your tyres checked and replaced if required. We only replace old tyre with brand new tyres.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Get your tyres checked and replaced if required. We only replace \n            old tyre with brand new tyres.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-5 order-md-1"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "featurette-image img-fluid mx-auto",
@@ -2704,7 +2710,7 @@ var SectionMarketing = function SectionMarketing() {
     alt: "Full service logo",
     width: "140",
     height: "140"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Full service from \xA399")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Full service from \xA3130")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "rounded-circle",
@@ -2712,7 +2718,7 @@ var SectionMarketing = function SectionMarketing() {
     alt: "Intrim Service Logo",
     width: "140",
     height: "140"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Intrim Service from \xA377")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Interim Service from \xA370")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-lg-4"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "rounded-circle",
