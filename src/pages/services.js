@@ -39,7 +39,7 @@ const ServicesPage = () => (
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
                 <small className="text-muted">from </small>
-                £99
+                £130
               </h1>
               <ul className="list-unstyled mt-3 mb-4">
                 <li>Full servicing of your car</li>
@@ -50,7 +50,7 @@ const ServicesPage = () => (
           </div>
           <div className="card mb-4 box-shadow">
             <div className="card-header">
-              <h4 className="my-0 font-weight-normal">Intrim Service</h4>
+              <h4 className="my-0 font-weight-normal">Interim Service</h4>
             </div>
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
