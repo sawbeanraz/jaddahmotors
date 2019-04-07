@@ -1,2 +1,0 @@
-webpackJsonp([60335399758886],{103:function(t,e){t.exports={data:{site:{siteMetadata:{title:"Restorer Motors",menu:[{key:"home",title:"Home",url:"/"},{key:"services",title:"Services",url:"/services"},{key:"about",title:"About",url:"/about"},{key:"contact",title:"Contact",url:"/contact"}]}}},layoutContext:{}}}});
-//# sourceMappingURL=path----de770ab9ca91e800d8ab.js.map
