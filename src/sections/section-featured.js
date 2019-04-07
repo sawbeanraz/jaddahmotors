@@ -1,15 +1,9 @@
 import React from 'react'
 
-
-
 import fullServiceImage from '../assets/images/full-service.jpg'
 import recoveryVanImage from '../assets/images/recovery-van.png'
 import picknfixImage from '../assets/images/picknfix.jpg';
 import brandNewTyresImage from '../assets/images/brand-new-tyres.jpg'
-
-
-
-
 
 const SectionFeatured = () => (
   <section className='page-section'>
@@ -52,7 +46,7 @@ const SectionFeatured = () => (
         </div>
         <div className="col-md-5">
           <img className="featurette-image img-fluid mx-auto"
-            src={picknfixImage} />
+            src={picknfixImage} alt='Fix it quick' />
         </div>
       </div>
 
@@ -68,7 +62,7 @@ const SectionFeatured = () => (
           </p>
         </div>
         <div className='col-md-5 order-md-1'>
-          <img className='featurette-image img-fluid mx-auto' src={brandNewTyresImage} />
+          <img className='featurette-image img-fluid mx-auto' src={brandNewTyresImage} alt='New Typres' />
         </div>
       </div>
     </div>

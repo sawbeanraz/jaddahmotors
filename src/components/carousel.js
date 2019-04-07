@@ -56,12 +56,12 @@ export default class Carousel extends Component {
       <div className="carousel slide" data-ride="carousel">
         <ol className="carousel-indicators">
           {this.props.items.map((item, index) => (
-            <li key={item.key} className={this.state.index == index?'active': ''}></li>
+            <li key={item.key} className={this.state.index === index?'active': ''}></li>
           ))}          
         </ol>
         <div className="carousel-inner">
           {this.props.items.map((item, index) => (
-            <div className={this.state.index == index?'carousel-item active':'carousel-item'}
+            <div className={this.state.index === index?'carousel-item active':'carousel-item'}
               key={item.key}
               style={{backgroundImage: `url(${item.image})`}}>
               <div className="container">
@@ -78,12 +78,12 @@ export default class Carousel extends Component {
           ))}          
         </div>
         <a className="carousel-control-prev" role="button" data-slide="prev"
-          onClick={this.handlePrevious}>
+          onClick={this.handlePrevious} href="#">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="sr-only">Previous</span>
         </a>
         <a className="carousel-control-next" role="button" data-slide="next"
-          onClick={this.handleNext}>
+          onClick={this.handleNext} href="#">
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="sr-only">Next</span>
         </a>
