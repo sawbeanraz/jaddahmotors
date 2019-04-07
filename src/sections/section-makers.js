@@ -1,9 +1,7 @@
 import React from 'react';
 
-
 const SectionMaker = () => (
-  <div className='test'>
-  </div>
-)
+  <div className="test" />
+);
 
 export default SectionMaker;

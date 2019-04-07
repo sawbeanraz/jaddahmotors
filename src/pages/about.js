@@ -2,6 +2,41 @@ import React from 'react';
 import SectionAbout from '../sections/section-about';
 import Layout from '../components/layout';
 
+const logoSVGStyle = {
+  opacity: 1,
+  fill: 'rgb(116, 121, 126)',
+  fillOpacity: 1,
+  stroke: 'none',
+  strokeWidth: 0.69999999,
+  strokeLinejoin: 'miter',
+  strokeMiterlimit: 4,
+  strokeDasharray: 'none',
+  strokeDashoffset: 0,
+  strokeOpacity: 0.88757396,
+};
+
+const logoTextStyle = {
+  fontStyle: 'normal',
+  fontVariant: 'normal',
+  fontWeight: '900',
+  fontStretch: 'normal',
+  fontSize: '27.19413948px',
+  lineHeight: '100%',
+  fontFamily: 'Umpush',
+  textAlign: 'start',
+  letterSpacing: '0px',
+  wordSpacing: '0px',
+  writingMode: 'lr-tb',
+  textAnchor: 'start',
+  fill: 'rgb(116, 121, 126)',
+  fillOpacity: 1,
+  stroke: 'none',
+  strokeWidth: '1px',
+  strokeLinecap: 'butt',
+  strokeLinejoin: 'miter',
+  strokeOpacity: 1,
+};
+
 const About = () => (
   <Layout>
     <main role="main" className="main-container">
@@ -38,41 +73,6 @@ const About = () => (
       <SectionAbout />
     </main>
   </Layout>
-)
+);
 
 export default About;
-
-const logoSVGStyle = {
-  opacity: 1,
-  fill: 'rgb(116, 121, 126)',
-  fillOpacity: 1,
-  stroke: 'none',
-  strokeWidth: 0.69999999,
-  strokeLinejoin: 'miter',
-  strokeMiterlimit: 4,
-  strokeDasharray: 'none',
-  strokeDashoffset: 0,
-  strokeOpacity: 0.88757396,
-};
-
-const logoTextStyle = {
-  fontStyle: 'normal',
-  fontVariant: 'normal',
-  fontWeight: '900',
-  fontStretch: 'normal',
-  fontSize: '27.19413948px',
-  lineHeight: '100%',
-  fontFamily: 'Umpush',
-  textAlign: 'start',
-  letterSpacing: '0px',
-  wordSpacing: '0px',
-  writingMode: 'lr-tb',
-  textAnchor: 'start',
-  fill: 'rgb(116, 121, 126)',
-  fillOpacity: 1,
-  stroke: 'none',
-  strokeWidth: '1px',
-  strokeLinecap: 'butt',
-  strokeLinejoin: 'miter',
-  strokeOpacity: 1,
-};

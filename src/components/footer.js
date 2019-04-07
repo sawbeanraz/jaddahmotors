@@ -17,16 +17,8 @@ const Footer = () => (
             SE18 1AQ
             <br />
             <i className="fa fa-phone" />
-            <tel> 020 8317 4430</tel>
+            <a href="tel:+442083174430">020 8317 4430</a>
           </address>
-          <ul className="list-inline social">
-            <li><a href="#"><i className="fa fa-facebook-square" /></a></li>
-            <li><a href="#"><i className="fa fa-twitter" /></a></li>
-            <li><a href="#"><i className="fa fa-google-plus-square" /></a></li>
-            <li><a href="#"><i className="fa fa-linkedin-square" /></a></li>
-            <li><a href="#"><i className="fa fa-rss-square" /></a></li>
-            <li><a href="#"><i className="fa fa-youtube-play" /></a></li>
-          </ul>
         </div>
 
         <div className="col-md-4">
