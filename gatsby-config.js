@@ -35,4 +35,5 @@ module.exports = {
       },
     },
   ],
+  pathPrefix: '/restorermotors.co.uk',
 };
