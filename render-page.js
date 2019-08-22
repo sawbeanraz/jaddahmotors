@@ -1794,7 +1794,8 @@ function (_Component) {
 
   var _proto = Carousel.prototype;
 
-  _proto.componentDidMount = function componentDidMount() {// this.handleTimer();
+  _proto.componentDidMount = function componentDidMount() {
+    this.handleTimer();
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
@@ -2533,7 +2534,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var pageCarouselItems = [{
   key: '001',
-  title: 'Air Conditioning Refill',
+  title: 'Air Conditioning Refill from £60',
   content: 'Vehicle air con Full Service / Re-gas',
   image: _assets_images_ac_banner_jpg__WEBPACK_IMPORTED_MODULE_4___default.a
 }, {
