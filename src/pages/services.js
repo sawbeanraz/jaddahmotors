@@ -17,6 +17,21 @@ const ServicesPage = () => (
       </div>
       <div className="container">
         <div className="card-deck mb-3 text-center">
+        <div className="card mb-4 box-shadow">
+            <div className="card-header">
+              <h4 className="my-0 font-weight-normal">Air Conditioning Refill</h4>
+            </div>
+            <div className="card-body">
+              <h1 className="card-title pricing-card-title">
+                <small className="text-muted">from </small>
+                £60
+              </h1>
+              <ul className="list-unstyled mt-3 mb-4">
+                <li>Vehicle air con Full Service / Re-gas</li>
+                <li>Re-gas and full A/C service to cars, vans, trucks and agricultural vehicles</li>
+              </ul>
+            </div>
+          </div>
           <div className="card mb-4 box-shadow">
             <div className="card-header">
               <h4 className="my-0 font-weight-normal">MOT</h4>
@@ -32,6 +47,8 @@ const ServicesPage = () => (
               </ul>
             </div>
           </div>
+        </div>
+        <div className="card-deck mb-3 text-center">
           <div className="card mb-4 box-shadow">
             <div className="card-header">
               <h4 className="my-0 font-weight-normal">Full Service</h4>
