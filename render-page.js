@@ -1604,6 +1604,17 @@ module.exports = {"data":{"site":{"siteMetadata":{"title":"Restorer Motors","men
 
 /***/ }),
 
+/***/ "./src/assets/images/ac-banner.jpg":
+/*!*****************************************!*\
+  !*** ./src/assets/images/ac-banner.jpg ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/ac-banner-8560d73f63fdd0b5e7df88ab0f9ec956.jpg";
+
+/***/ }),
+
 /***/ "./src/assets/images/banner-pickup.jpg":
 /*!*********************************************!*\
   !*** ./src/assets/images/banner-pickup.jpg ***!
@@ -1783,8 +1794,7 @@ function (_Component) {
 
   var _proto = Carousel.prototype;
 
-  _proto.componentDidMount = function componentDidMount() {
-    this.handleTimer();
+  _proto.componentDidMount = function componentDidMount() {// this.handleTimer();
   };
 
   _proto.componentWillUnmount = function componentWillUnmount() {
@@ -2397,6 +2407,20 @@ var ServicesPage = function ServicesPage() {
     className: "card-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "my-0 font-weight-normal"
+  }, "Air Conditioning Refill")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "card-title pricing-card-title"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+    className: "text-muted"
+  }, "from "), "\xA360"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "list-unstyled mt-3 mb-4"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Vehicle air con Full Service / Re-gas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Re-gas and full A/C service to cars, vans, trucks and agricultural vehicles")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card mb-4 box-shadow"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    className: "my-0 font-weight-normal"
   }, "MOT")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
@@ -2405,7 +2429,9 @@ var ServicesPage = function ServicesPage() {
     className: "text-muted"
   }), "\xA340"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled mt-3 mb-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All kind of vehicle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We make sure you vehicle pass MOT")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All kind of vehicle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We make sure you vehicle pass MOT"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-deck mb-3 text-center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card mb-4 box-shadow"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-header"
@@ -2498,18 +2524,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_images_banner_service_price_jpg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_images_banner_service_price_jpg__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _assets_images_banner_pickup_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/images/banner-pickup.jpg */ "./src/assets/images/banner-pickup.jpg");
 /* harmony import */ var _assets_images_banner_pickup_jpg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_assets_images_banner_pickup_jpg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _assets_images_ac_banner_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/images/ac-banner.jpg */ "./src/assets/images/ac-banner.jpg");
+/* harmony import */ var _assets_images_ac_banner_jpg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_images_ac_banner_jpg__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
 
 var pageCarouselItems = [{
   key: '001',
+  title: 'Air Conditioning Refill',
+  content: 'Vehicle air con Full Service / Re-gas',
+  image: _assets_images_ac_banner_jpg__WEBPACK_IMPORTED_MODULE_4___default.a
+}, {
+  key: '002',
   title: '',
   content: '',
   image: _assets_images_banner_service_price_jpg__WEBPACK_IMPORTED_MODULE_2___default.a,
   url: ''
 }, {
-  key: '002',
+  key: '003',
   title: 'Pickup Service',
   content: 'Pickup service when you need it',
   image: _assets_images_banner_pickup_jpg__WEBPACK_IMPORTED_MODULE_3___default.a
