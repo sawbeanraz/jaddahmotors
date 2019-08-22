@@ -8,7 +8,7 @@ import bannerAc from '../assets/images/ac-banner.jpg';
 const pageCarouselItems = [
   {
     key: '001',
-    title: 'Air Conditioning Refill',
+    title: 'Air Conditioning Refill from £60',
     content: 'Vehicle air con Full Service / Re-gas',
     image: bannerAc,
   },
