@@ -2430,7 +2430,7 @@ var ServicesPage = function ServicesPage() {
     className: "text-muted"
   }), "\xA340"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled mt-3 mb-4"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All kind of vehicle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We make sure you vehicle pass MOT"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "All types of vehicle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "We make sure you vehicle pass MOT"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-deck mb-3 text-center"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card mb-4 box-shadow"
