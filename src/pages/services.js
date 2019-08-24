@@ -42,7 +42,7 @@ const ServicesPage = () => (
                 £40
               </h1>
               <ul className="list-unstyled mt-3 mb-4">
-                <li>All kind of vehicle</li>
+                <li>All types of vehicle</li>
                 <li>We make sure you vehicle pass MOT</li>
               </ul>
             </div>
